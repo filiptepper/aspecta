@@ -1,0 +1,7 @@
+en:
+  errors:
+    messages:
+      image_is_too_narrow: "image is too narrow, minimum is %{size} pixels"
+      image_is_too_wide: "image is too wide, maximum is %{size} pixels"
+      image_is_too_short: "image is too short, minimum is %{size} pixels"
+      image_is_too_tall: "image is too tall, maximum is %{size} pixels"

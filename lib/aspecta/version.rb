@@ -1,0 +1,3 @@
+module Aspecta
+  VERSION = "0.0.1"
+end
