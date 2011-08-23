@@ -1,6 +1,6 @@
 # aspecta
 
-``aspect`` is small add-on for the awesome
+``aspecta`` is small add-on for the awesome
 [carrierwave](http://github.com/jnicklas/carrierwave) gem. ``aspecta``
 adds image dimensions validator to your ActiveRecords models.
 
