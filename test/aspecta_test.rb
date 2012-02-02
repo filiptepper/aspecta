@@ -9,7 +9,7 @@ class AspectaTest < Test::Unit::TestCase
   # ===========
 
   def fixture(file)
-    File.open(File.dirname(__FILE__) + "/fixtures/#{file}.png")
+    File.open(File.dirname(__FILE__) + "/fixtures/#{file}")
   end
 
   # ===========
@@ -24,7 +24,7 @@ class AspectaTest < Test::Unit::TestCase
 
   def test_requires_width_or_height_option
     user = UserWithInvalidValidation.new
-    user.avatar = fixture "200x200"
+    user.avatar = fixture "200x200.png"
 
     exception = assert_raise ArgumentError do
       user.valid?
@@ -36,7 +36,7 @@ class AspectaTest < Test::Unit::TestCase
 
   def test_requires_minimum_or_maximum_for_height_option
     user = UserWithInvalidValitionHeightOptions.new
-    user.avatar = fixture "200x200"
+    user.avatar = fixture "200x200.png"
 
     exception = assert_raise ArgumentError do
       user.valid?
@@ -48,7 +48,7 @@ class AspectaTest < Test::Unit::TestCase
 
   def test_requires_minimum_or_maximum_for_width_option
     user = UserWithInvalidValitionWidthOptions.new
-    user.avatar = fixture "200x200"
+    user.avatar = fixture "200x200.png"
 
     exception = assert_raise ArgumentError do
       user.valid?
@@ -65,14 +65,14 @@ class AspectaTest < Test::Unit::TestCase
   def test_valid_minimum_width
     user = UserMinimumWidth200.new
 
-    user.avatar = fixture "200x200"
+    user.avatar = fixture "200x200.png"
     assert user.valid?
   end
 
   def test_invalid_minimum_width
     user = UserMinimumWidth200.new
 
-    user.avatar = fixture "199x199"
+    user.avatar = fixture "199x199.png"
     assert ! user.valid?
     assert user.errors[:avatar].
       include?("image is too narrow, minimum is 200 pixels")
@@ -85,14 +85,14 @@ class AspectaTest < Test::Unit::TestCase
   def test_valid_minimum_height
     user = UserMinimumHeight200.new
 
-    user.avatar = fixture "200x200"
+    user.avatar = fixture "200x200.png"
     assert user.valid?
   end
 
   def test_invalid_minimum_height
     user = UserMinimumHeight200.new
 
-    user.avatar = fixture "199x199"
+    user.avatar = fixture "199x199.png"
     assert ! user.valid?
     assert user.errors[:avatar].
       include?("image is too short, minimum is 200 pixels")
@@ -105,14 +105,14 @@ class AspectaTest < Test::Unit::TestCase
   def test_valid_maximum_width
     user = UserMaximumWidth200.new
 
-    user.avatar = fixture "200x200"
+    user.avatar = fixture "200x200.png"
     assert user.valid?
   end
 
   def test_invalid_maximum_width
     user = UserMaximumWidth200.new
 
-    user.avatar = fixture "201x201"
+    user.avatar = fixture "201x201.png"
     assert ! user.valid?
     assert user.errors[:avatar].
       include?("image is too wide, maximum is 200 pixels")
@@ -125,14 +125,14 @@ class AspectaTest < Test::Unit::TestCase
   def test_valid_maximum_height
     user = UserMaximumHeight200.new
 
-    user.avatar = fixture "200x200"
+    user.avatar = fixture "200x200.png"
     assert user.valid?
   end
 
   def test_invalid_maximum_height
     user = UserMaximumHeight200.new
 
-    user.avatar = fixture "201x201"
+    user.avatar = fixture "201x201.png"
     assert ! user.valid?
     assert user.errors[:avatar].
       include?("image is too tall, maximum is 200 pixels")
