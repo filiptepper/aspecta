@@ -33,15 +33,19 @@ class DimensionsValidator < ActiveModel::EachValidator
 
     dimensions = FastImage.size value.path
 
-    DIMENSIONS.each_with_index do |dimension, index|
-      next if options[dimension].nil?
+    if dimensions.nil?
+      record.errors.add(attribute, :invalid)
+    else
+      DIMENSIONS.each_with_index do |dimension, index|
+        next if options[dimension].nil?
 
-      options[dimension].each do |measure, size|
-        unless dimensions[index].send(ATTRIBUTES[measure], size)
-             record.errors.add(attribute,
+        options[dimension].each do |measure, size|
+          unless dimensions[index].send(ATTRIBUTES[measure], size)
+            record.errors.add(attribute,
               MESSAGES[dimension][measure],
               :size => size
             )
+          end
         end
       end
     end

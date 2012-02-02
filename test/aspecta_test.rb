@@ -137,4 +137,16 @@ class AspectaTest < Test::Unit::TestCase
     assert user.errors[:avatar].
       include?("image is too tall, maximum is 200 pixels")
   end
+
+  # =====================
+  # = invalid file type =
+  # =====================
+
+  def test_valid_maximum_height
+    user = UserMinimumDimensions100.new
+
+    user.avatar = fixture "200x200.tiff"
+    assert !user.valid?
+    assert user.errors[:avatar].include?("is invalid")
+  end
 end

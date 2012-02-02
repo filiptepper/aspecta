@@ -48,3 +48,10 @@ class UserMaximumHeight200 < User
     :height => { :maximum => 200 }
   }
 end
+
+class UserMinimumDimensions100 < User
+  validates :avatar, :dimensions => {
+    :height => { :minimum => 100 },
+    :width => { :maximum => 100 }
+  }
+end
