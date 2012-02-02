@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_development_dependency "activemodel"
-  s.add_development_dependency "carrierwave"
+  s.add_development_dependency "activemodel", ">=3.0.0"
+  s.add_development_dependency "activerecord", ">=3.0.0"
+  s.add_development_dependency "carrierwave", "~>0.5.0"
   s.add_dependency "fastimage"
 end
